@@ -1,0 +1,25 @@
+Customer : 
+	* after logging in, return customerEmail
+
+	Register Complaint
+		ComplaintTable - ticketId(pk)(autoIncrement), customerEmail(fk), pincode, complaint, status(default - raised)
+	* return the entire ticket object
+	* button : view registered complaints - print all complaints of this customer wrt customerEmail from "complaintTable"
+	with each row containing a button to send feedback
+	* send feedback: feedbackTable - feedbackId(pk), ticketId(fk), customerEmail(fk), feedback
+
+Manager :
+	* after logging in, return pincode 
+	* button - view Complaints : print ComplaintTable wrt pincode.
+	* each row of table must contain a dropdown of all engineer email id and a submit button, for engineer assignment to tickets(complaints)
+	* button - submit : engineerAssignmentTable - id(pk), engineerEmail(fk), ticketId(fk), customerEmail(fk)
+	* button - view feedback : print feedbackTable
+
+ Engineer : 
+	* after loggin in, get engineerEmail
+	* fetch ticketId which has that engineerEmail, from the engineerAssignmentTable, as a number array
+	* return that number array
+	* button - view Complaints : send the array of ticketId.
+	* fetch all complaints from ComplaintTable based on the ticketIds
+	* update status 
+	* button - view feedback : print feedbackTable
